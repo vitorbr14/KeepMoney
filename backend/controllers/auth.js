@@ -64,6 +64,9 @@ const login = async (req, res) => {
 		token
 	})
 
+	console.log(req.jwtInfo)
+
+
 }
 
 module.exports = {
