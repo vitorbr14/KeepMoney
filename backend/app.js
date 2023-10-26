@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('express-async-errors');
 const express = require('express');
+const authMiddleware = require('./middleware/authentication')
 const app = express();
 
 // connectDB
@@ -13,7 +14,7 @@ const valueRouter = require('./routes/value')
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const authMiddleware = require('./middleware/authentication')
+
 app.use(express.json());
 // extra packages
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/values', authMiddleware, valueRouter)
 
+// middlewares
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

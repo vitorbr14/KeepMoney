@@ -1,9 +1,7 @@
 const express = require('express')
 const {UnauthenticatedError} = require('../errors')
 const jwt = require('jsonwebtoken')
-const {
-	StatusCodes
-} = require('http-status-codes')
+const {StatusCodes} = require('http-status-codes')
 
 var auth = function async (req, res, next) {
     const authHeader = req.headers.authorization
